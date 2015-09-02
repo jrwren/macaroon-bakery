@@ -325,6 +325,7 @@ func NewCookie(ms macaroon.Slice) (*http.Cookie, error) {
 	return &http.Cookie{
 		Name:  fmt.Sprintf("macaroon-%x", ms[0].Signature()),
 		Value: base64.StdEncoding.EncodeToString(data),
+		Path:  "/",
 		// TODO(rog) other fields, particularly expiry time.
 	}, nil
 }
